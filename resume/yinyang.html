@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        #yin-yang {
+            width: 48px;
+            box-sizing: content-box;
+            height: 96px;
+            background: #eee;
+            border-color: pink;
+            border-style: solid;
+            border-width: 2px 2px 2px 50px;
+            border-radius: 100%;
+            position: relative;
+            margin: auto;
+        }
+
+        #yin-yang:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -50%;
+            background: #eee;
+            border: 18px solid pink;
+            border-radius: 100%;
+            width: 12px;
+            height: 12px;
+            box-sizing: content-box;
+        }
+
+        #yin-yang:after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: -50%;
+            background: pink;
+            border: 18px solid #eee;
+            border-radius: 100%;
+            width: 12px;
+            height: 12px;
+            box-sizing: content-box;
+        }
+    </style>
+    <title>太极图作业</title>
+</head>
+
+<body>
+    <div id="yin-yang"></div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            for (var i = 0; i < 3; i++) {
+                setTimeout(function(){ 
+                    console.log("Hello"); 
+                }, 3000)
+            }
+        }, false)
+    </script>
+</body>
+
+</html>
