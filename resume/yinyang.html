@@ -6,59 +6,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <style>
-        #yin-yang {
-            width: 48px;
-            box-sizing: content-box;
-            height: 96px;
-            background: #eee;
-            border-color: pink;
-            border-style: solid;
-            border-width: 2px 2px 2px 50px;
-            border-radius: 100%;
+        body {
+            background-color: lightblue;
+            text-align: center;
+        }
+
+        #pass {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(to right, #ffffff 0%, #ffffff 50%, #9b4d8f 51%, #9b4d8f 100%);
             position: relative;
             margin: auto;
+            animation: spin 3s infinite;
+            animation-timing-function: linear;
         }
 
-        #yin-yang:before {
+        #pass::before {
             content: "";
+            border: 40px solid #9B4D8F;
             position: absolute;
-            top: 0;
-            left: -50%;
-            background: #eee;
-            border: 18px solid pink;
-            border-radius: 100%;
-            width: 12px;
-            height: 12px;
-            box-sizing: content-box;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            left: 50px;
+            background-color: #ffffff;
+            box-sizing: border-box;
         }
 
-        #yin-yang:after {
+        #pass::after {
             content: "";
+            border: 40px solid #ffffff;
             position: absolute;
-            top: 50%;
-            left: -50%;
-            background: pink;
-            border: 18px solid #eee;
-            border-radius: 100%;
-            width: 12px;
-            height: 12px;
-            box-sizing: content-box;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            left: 50px;
+            top: 100px;
+            background-color: #9B4D8F;
+            box-sizing: border-box;
+        }
+
+        p {
+            margin-top: 30px;
+            font-family: "Kai"
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
         }
     </style>
     <title>太极图作业</title>
 </head>
 
 <body>
-    <div id="yin-yang"></div>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            for (var i = 0; i < 3; i++) {
-                setTimeout(function(){ 
-                    console.log("Hello"); 
-                }, 3000)
-            }
-        }, false)
-    </script>
+    <div id="pass"></div>
+    <p>太极生两仪，两仪生四象，四象生八卦</p>
 </body>
 
 </html>
