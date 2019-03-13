@@ -245,7 +245,7 @@ body>.main .button:hover {
     margin-top: 25px;
 }
 
-.skills h2 {
+h2.secondHeader {
     text-align: center;
     padding-top: 70px;
     font-size: 34px;
@@ -283,4 +283,96 @@ body>.main .button:hover {
 .skills ol>li:nth-child(odd) {
     box-sizing: border-box;
     padding-right: 30px;
+}
+
+.projects {
+    max-width: 930px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.projects nav {
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 32px;
+}
+
+.projects nav ol {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 auto;
+}
+
+.projects nav ol li {
+    float: left;
+    margin-left: 51px;
+    cursor: pointer;
+}
+
+.projects nav ol li:first-child {
+    margin-left: 0;
+}
+
+.projects .bar {
+    height: 5px;
+    background-color: white;
+    position: relative;
+    border-radius: 2px;
+    margin-top: 12px;
+}
+
+.projects .bar .fillbar {
+    height: 100%;
+    background-color: #D26464;
+    position: absolute;
+    left: 0;
+    width: 25%;
+    border-radius: 2px;
+    transition: all 1s;
+}
+
+.fillbar1 {
+    height: 100%;
+    background-color: #D26464;
+    position: absolute;
+    width: 35%;
+    left: 30%;
+    border-radius: 2px;
+    transition: all 1s;
+}
+
+.fillbar2 {
+    height: 100%;
+    background-color: #D26464;
+    position: absolute;
+    width: 30%;
+    left: 75%;
+    border-radius: 2px;
+    transition: all 1s;
+}
+
+.jobs {
+    position: relative;
+    height: 576px;
+    margin-top: 30px;
+}
+
+.bigimage,
+.smalltop,
+.smallbottom {
+    position: absolute;
+    display: block;
+    box-shadow: 0px 0px 10px 1px rgba(191,186,90,0.84);
+}
+
+.smalltop {
+    left: 68.4%;
+}
+
+.smallbottom {
+    left: 68.4%;
+    top: 51.8%;
 }

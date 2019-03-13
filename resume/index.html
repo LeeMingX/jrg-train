@@ -105,7 +105,7 @@
         cupiditate? Provident corporis voluptatem quod porro esse doloribus
         veritatis laudantium sequi accusantium officiis!
       </p>
-      <section>
+      <!-- <section>
         <div class="social">
           <h2>Twitter</h2>
           <img src="#" alt="Twitter图标" />
@@ -117,9 +117,9 @@
           </p>
           <p>2018-05-07</p>
         </div>
-      </section>
+      </section> -->
       <section class="skills">
-        <h2>专业技能</h2>
+        <h2 class="secondHeader">专业技能</h2>
         <ol class="clearfix">
           <li>
             <h3>HTML5 &amp; CSS3</h3>
@@ -159,22 +159,36 @@
           </li>
         </ol>
       </section>
-      <section>
-        <h2>Project</h2>
+      <section class="projects">
+        <h2 class="secondHeader">作品集</h2>
         <nav>
-          <ol>
-            <li><a href="#">all</a></li>
-            <li><a href="#">框架</a></li>
-            <li><a href="#">原生</a></li>
+          <ol class="clearfix">
+            <li id="all">所有</li>
+            <li id="frame">框架</li>
+            <li id="js">JS原生</li>
           </ol>
+          <div class="bar">
+            <div class="fillbar" id="progress"></div>
+          </div>
         </nav>
         <div class="jobs">
-          <div class="bigimage"></div>
-          <div class="smalliamge"></div>
-          <div class="smalliamge"></div>
+          <div class="bigimage"><img src="./img/p1.jpg" alt="big" /></div>
+          <div class="smalltop"><img src="./img/p2.jpg" alt="small" /></div>
+          <div class="smallbottom"><img src="./img/p3.jpg" alt="small" /></div>
         </div>
       </section>
     </main>
     <script src="//at.alicdn.com/t/font_1079454_bh1ezk4jbn5.js"></script>
+    <script>
+      all.onclick = function() {
+        progress.className = "fillbar";
+      };
+      frame.onclick = function() {
+        progress.className = "fillbar1";
+      };
+      js.onclick = function() {
+        progress.className = "fillbar2";
+      };
+    </script>
   </body>
 </html>
