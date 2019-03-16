@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header></header>
+    <main>
+      <div class="wrapper" id="x"></div>
+    </main>
+    <footer></footer>
+    <script>
+      var keys = [
+        ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"],
+        ["a", "s", "d", "f", "g", "h", "j", "k", "l"],
+        ["z", "x", "c", "v", "b", "n", "m"]
+      ];
+      var rel = {
+        q: "miaomiaomiao.com",
+        w: "miaomiaomiao.com",
+        e: "miaomiaomiao.com",
+        t: "miaomiaomiao.com",
+        f: "miaomiaomiao.com",
+        g: "miaomiaomiao.com",
+        z: "miaomiaomiao.com",
+        v: "miaomiaomiao.com",
+        b: "miaomiaomiao.com",
+        n: "miaomiaomiao.com",
+        m: "miaomiaomiao.com"
+      };
+
+      var hashStorage = JSON.parse(localStorage.getItem("rel") || "");
+      if (hashStorage) {
+        rel = hashStorage;
+      }
+
+      for (var i = 0; i < keys.length; ++i) {
+        tmp_div = document.createElement("div");
+        for (var j = 0; j < keys[i].length; ++j) {
+          k = document.createElement("kbd");
+          k.textContent = keys[i][j];
+          btn = document.createElement("button");
+          btn.textContent = "编辑";
+          btn.id = keys[i][j];
+          btn.onclick = function(event) {
+            modify = prompt(
+              "请修改" + event.target.id + "键对应的网址",
+              "当前网址是：" + rel[event.target.id]
+            );
+            rel[event.target.id] = modify;
+            localStorage.setItem("rel", JSON.stringify(rel));
+          };
+          k.appendChild(btn);
+          tmp_div.appendChild(k);
+        }
+        x.appendChild(tmp_div);
+      }
+
+      document.onkeypress = function(event) {
+        console.log("你按键的所有信息是：");
+        key = event["key"];
+        console.log(key);
+        is_contain = false;
+        for (var k in rel) {
+          if (k == key) {
+            is_contain = true;
+          }
+        }
+        if (is_contain) {
+          website = rel[key];
+          //location.href = 'http://' + website
+          window.open("http://" + website, "_blank");
+        } else {
+          alert("对不起，这个键没有对应的网页！");
+        }
+      };
+    </script>
+  </body>
+</html>

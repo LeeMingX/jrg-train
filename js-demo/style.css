@@ -1,0 +1,58 @@
+* {
+    margin: 0;
+    padding: 0
+}
+
+a {
+    text-decoration: none
+}
+
+kbd {
+    border: 1px solid black
+}
+
+main {
+    text-align: center;
+}
+
+.wrapper {
+    display: inline-block;
+    border: 1px solid blue;
+}
+
+.wrapper>div {
+    text-align: left;
+}
+
+#x>div:nth-child(2) {
+    margin-left: 2em;
+}
+
+#x>div:nth-child(3) {
+    margin-left: 4em;
+}
+
+main>#x kbd {
+    padding: 18px 0;
+    width: 55px;
+    font-size: 15px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    box-sizing: border-box;
+    margin-left: 16px;
+    margin-top: 15px;
+    display: inline-block;
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+}
+
+kbd>button {
+    position: absolute;
+    right: 0;
+    top: 72%;
+    display: none;
+}
+
+kbd:hover> button {
+    display: inline-block;
+}
