@@ -7,17 +7,13 @@ a {
     text-decoration: none
 }
 
-kbd {
-    border: 1px solid black
-}
-
 main {
     text-align: center;
 }
 
 .wrapper {
     display: inline-block;
-    border: 1px solid blue;
+    margin: 100px auto;
 }
 
 .wrapper>div {
@@ -36,7 +32,9 @@ main>#x kbd {
     padding: 18px 0;
     width: 55px;
     font-size: 15px;
+    color: #999999;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-radius: 5px;
     box-sizing: border-box;
     margin-left: 16px;
     margin-top: 15px;
@@ -44,6 +42,12 @@ main>#x kbd {
     text-transform: uppercase;
     text-align: center;
     position: relative;
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 1) 0%, rgba(246, 246, 246, 1) 73%, rgba(237, 237, 237, 1) 100%);
+    box-shadow: 0px 3px 9px 0px rgba(0, 0, 0, 0.38);
+}
+
+main>#x kbd:hover {
+    box-shadow: 0px -1px 8px 0px rgba(0, 0, 0, 0.55);
 }
 
 kbd>button {
@@ -53,6 +57,6 @@ kbd>button {
     display: none;
 }
 
-kbd:hover> button {
+kbd:hover>button {
     display: inline-block;
 }

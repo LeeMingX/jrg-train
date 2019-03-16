@@ -33,7 +33,7 @@
         m: "miaomiaomiao.com"
       };
 
-      var hashStorage = JSON.parse(localStorage.getItem("rel") || "");
+      var hashStorage = JSON.parse(localStorage.getItem("rel") || null);
       if (hashStorage) {
         rel = hashStorage;
       }
@@ -42,6 +42,7 @@
         tmp_div = document.createElement("div");
         for (var j = 0; j < keys[i].length; ++j) {
           k = document.createElement("kbd");
+          k.id = "key" + keys[i][j];
           k.textContent = keys[i][j];
           btn = document.createElement("button");
           btn.textContent = "编辑";
@@ -60,10 +61,21 @@
         x.appendChild(tmp_div);
       }
 
+      document.onkeyup = function(event) {
+        var key = event["key"];
+        console.log(key);
+        var selected = document.getElementById("key" + key);
+        selected.style.boxShadow = "";
+        console.log(selected.style);
+      };
+
       document.onkeypress = function(event) {
         console.log("你按键的所有信息是：");
-        key = event["key"];
+        var key = event["key"];
         console.log(key);
+        var selected = document.getElementById("key" + key);
+        selected.style.boxShadow = "0px -1px 8px 0px rgba(0, 0, 0, 0.55)";
+        console.log(selected.style);
         is_contain = false;
         for (var k in rel) {
           if (k == key) {
@@ -73,9 +85,10 @@
         if (is_contain) {
           website = rel[key];
           //location.href = 'http://' + website
+          selected.style.boxShadow = "";
           window.open("http://" + website, "_blank");
         } else {
-          alert("对不起，这个键没有对应的网页！");
+          //alert("对不起，这个键没有对应的网页！");
         }
       };
     </script>
