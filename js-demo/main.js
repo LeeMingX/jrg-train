@@ -115,8 +115,6 @@ function listen_keyboard() {
       //location.href = 'http://' + website
       selected.style.boxShadow = "";
       window.open("http://" + website, "_blank");
-    } else {
-      alert("对不起，这个键没有对应的网页！");
     }
   };
 }
