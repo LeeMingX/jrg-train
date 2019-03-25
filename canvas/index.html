@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <script src="//at.alicdn.com/t/font_1107314_rtsaaozngcb.js"></script>
+    <script src="//at.alicdn.com/t/font_1107314_2wz6s889zit.js"></script>
     <title>画板APP</title>
     <style>
       body {
@@ -48,13 +48,13 @@
         fill: black;
         transform: scale(1.2);
       }
-      ol {
+      #colorpicker {
         position: absolute;
         top: 130px;
         left: 50px;
         display: none;
       }
-      ol > li {
+      #colorpicker > li {
         height: 20px;
         width: 20px;
         border-radius: 50%;
@@ -73,6 +73,63 @@
       ol .active {
         box-shadow: 0 0 3px rgba(0, 0, 0, 0.85);
         transform: scale(1.5);
+      }
+      #sizes {
+        position: absolute;
+        left: 26px;
+        top: 270px;
+        display: none;
+      }
+      #sizes li#thin {
+        border-top: 3px solid black;
+        width: 70px;
+        margin-bottom: 5px;
+        position: relative;
+        vertical-align: top;
+      }
+      #sizes li.afterclickthin::after {
+        content: "";
+        border: 1px solid black;
+        width: 3px;
+        height: 3px;
+        position: absolute;
+        right: -15px;
+        top: -4px;
+        border-radius: 50%;
+        background: black;
+      }
+      #sizes li#thick {
+        border-top: 6px solid black;
+        width: 70px;
+        margin-bottom: 5px;
+      }
+      #sizes li.afterclickthick::after {
+        content: "";
+        border: 1px solid black;
+        width: 6px;
+        height: 6px;
+        position: absolute;
+        right: -17px;
+        top: 7px;
+        border-radius: 50%;
+        background: black;
+      }
+      #sizes li#bold {
+        border-top: 9px solid black;
+        width: 70px;
+        margin-bottom: 5px;
+      }
+      #sizes li.afterclickbold::after {
+        content: "";
+        border: 1px solid black;
+        width: 9px;
+        height: 9px;
+        position: absolute;
+        right: -19px;
+        top: 18px;
+        border-radius: 50%;
+        background: black;
+        display: block;
       }
     </style>
   </head>
@@ -95,12 +152,22 @@
             <use xlink:href="#icon-custom-clear"></use>
           </svg>
         </li>
+        <li>
+            <svg id="save" class="icon" aria-hidden="true">
+              <use xlink:href="#icon-Save-fromCloud"></use>
+            </svg>
+          </li>
       </ul>
     </div>
     <ol id="colorpicker">
       <li id="red"></li>
       <li id="lightyellow"></li>
       <li id="lightgrey"></li>
+    </ol>
+    <ol id="sizes">
+      <li id="thin"></li>
+      <li id="thick"></li>
+      <li id="bold"></li>
     </ol>
     <script src="draw.js"></script>
   </body>

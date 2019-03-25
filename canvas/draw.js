@@ -9,19 +9,18 @@ function setPageSize(ele) {
   ele.height = pageHeight;
 }
 
-function drawLine(ctx, x1, y1, x2, y2, width) {
+function drawLine(ctx, x1, y1, x2, y2) {
   ctx.beginPath();
   ctx.strokeStyle = ctx.strokeStyle ? ctx.strokeStyle : color;
-  ctx.lineWidth = width;
   ctx.moveTo(x1, y1);
   ctx.lineTo(x2, y2);
   ctx.stroke();
   ctx.closePath();
 }
 
-function drawCircle(ctx, x, y, radius, deg) {
+function drawCircle(ctx, x, y, deg) {
   ctx.beginPath();
-  ctx.arc(x, y, radius, 0, deg);
+  ctx.arc(x, y, ctx.lineWidth / 2, 0, deg);
   ctx.fillStyle = ctx.fillStyle ? ctx.fillStyle : color;
   ctx.fill();
 }
@@ -45,8 +44,8 @@ function listenUser(canvas) {
       var x = event.touches[0].clientX;
       var y = event.touches[0].clientY;
       if (tools.cur_tool === "brush" && turnon) {
-        drawCircle(ctx, x, y, 6, Math.PI * 2);
-        drawLine(ctx, x, y, draw_start.x, draw_start.y, 12);
+        drawCircle(ctx, x, y, Math.PI * 2);
+        drawLine(ctx, x, y, draw_start.x, draw_start.y);
         draw_start.x = x;
         draw_start.y = y;
       } else if (tools.cur_tool === "eraser" && turnon) {
@@ -64,7 +63,7 @@ function listenUser(canvas) {
       turnon = true;
       if (tools.cur_tool === "brush" && turnon) {
         draw_start = { x: x, y: y };
-        drawCircle(ctx, x, y, 6, Math.PI * 2);
+        drawCircle(ctx, x, y, Math.PI * 2);
       } else if (tools.cur_tool === "eraser" && turnon) {
         ctx.clearRect(x - 5, y - 5, 10, 10);
       }
@@ -74,8 +73,8 @@ function listenUser(canvas) {
       var x = event.clientX;
       var y = event.clientY;
       if (tools.cur_tool === "brush" && turnon) {
-        drawCircle(ctx, x, y, 6, Math.PI * 2);
-        drawLine(ctx, x, y, draw_start.x, draw_start.y, 12);
+        drawCircle(ctx, x, y, Math.PI * 2);
+        drawLine(ctx, x, y, draw_start.x, draw_start.y);
         draw_start.x = x;
         draw_start.y = y;
       } else if (tools.cur_tool === "eraser" && turnon) {
@@ -95,11 +94,17 @@ var draw_start = null;
 var brush = document.getElementById("brush");
 var eraser = document.getElementById("eraser");
 var clear = document.getElementById("clear");
-var colorpicker = document.getElementById("colorpicker");
+var save = document.getElementById("save");
 
+var colorpicker = document.getElementById("colorpicker");
 var red = document.getElementById("red");
 var lightyellow = document.getElementById("lightyellow");
 var lightgrey = document.getElementById("lightgrey");
+
+var sizes = document.getElementById("sizes");
+var thin = document.getElementById("thin");
+var thick = document.getElementById("thick");
+var bold = document.getElementById("bold");
 
 setPageSize(canvas);
 
@@ -116,6 +121,10 @@ brush.onclick = function() {
     eraser.classList.remove("active");
     clear.classList.remove("active");
     colorpicker.style.display = "block";
+    sizes.style.display = "block";
+    thin.className = "";
+    thick.className = "";
+    bold.className = "";
   }
 };
 
@@ -126,6 +135,7 @@ eraser.onclick = function() {
     brush.classList.remove("active");
     clear.classList.remove("active");
     colorpicker.style.display = "none";
+    sizes.style.display = "none";
   }
 };
 
@@ -139,15 +149,22 @@ clear.onclick = function() {
     brush.classList.remove("active");
     eraser.classList.remove("active");
     colorpicker.style.display = "none";
+    sizes.style.display = "none";
   }
 };
 
+save.onclick = function() {
+  var url = canvas.toDataURL();
+  var a = document.createElement("a");
+  a.download = "demo";
+  a.href = url;
+  a.click();
+};
+
 red.onclick = function() {
-  console.log("haha");
   red.classList.add("active");
   ctx.strokeStyle = "red";
   ctx.fillStyle = "red";
-  console.log(ctx.strokeStyle);
 
   lightyellow.classList.remove("active");
   lightgrey.classList.remove("active");
@@ -169,4 +186,25 @@ lightgrey.onclick = function() {
 
   red.classList.remove("active");
   lightyellow.classList.remove("active");
+};
+
+thin.onclick = function() {
+  this.className = "afterclickthin";
+  thick.className = "";
+  bold.className = "";
+  ctx.lineWidth = 3;
+};
+
+thick.onclick = function() {
+  this.className = "afterclickthick";
+  thin.className = "";
+  bold.className = "";
+  ctx.lineWidth = 6;
+};
+
+bold.onclick = function() {
+  this.className = "afterclickbold";
+  thick.className = "";
+  thin.className = "";
+  ctx.lineWidth = 9;
 };
