@@ -4,25 +4,37 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
+    <title>画板APP</title>
     <style>
       body {
         margin: 0;
       }
-      #canvas {
-        height: 100vh;
+      ul {
+        margin: 0 0;
+        padding: 0 0;
+        list-style: none;
+      }
+      #sample {
         background: red;
         position: relative;
+        vertical-align: top;
       }
-    </style>
-    <style>
-      #sample {
-        background: green;
+      #tools {
+        position: absolute;
+        top: 50px;
+        left: 100px;
       }
     </style>
   </head>
   <body>
     <canvas id="sample"></canvas>
+    <div id="tools">
+      <ul>
+        <li><button id="brush">画笔</button></li>
+        <li><button id="erasor">橡皮擦</button></li>
+        <li><button id="clear">清空</button></li>
+      </ul>
+    </div>
     <script src="draw.js"></script>
   </body>
 </html>

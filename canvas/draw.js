@@ -1,66 +1,6 @@
-// var div = document.getElementById("canvas");
-// var is_paint = false;
-// div.onmousedown = function(event) {
-//   var x = event.clientX;
-//   var y = event.clientY;
-//   console.log("x:" + x + " y:" + y);
-//   var divA = document.createElement("div");
-//   is_paint = true;
-//   divA.style =
-//     "width: 6px; height: 6px;" +
-//     "background: black;" +
-//     "border-radius: 3px;" +
-//     "position: absolute;" +
-//     "left: " +
-//     (x - 3) +
-//     "px; top: " +
-//     (y - 3) +
-//     "px;";
-//   div.appendChild(divA);
-// };
-
-// div.onmousemove = function(event) {
-//   if (is_paint) {
-//     var x = event.clientX;
-//     var y = event.clientY;
-//     console.log("x:" + x + " y:" + y);
-//     var divA = document.createElement("div");
-//     is_paint = true;
-//     divA.style =
-//       "width: 6px; height: 6px;" +
-//       "background: black;" +
-//       "border-radius: 3px;" +
-//       "position: absolute;" +
-//       "left: " +
-//       (x - 3) +
-//       "px; top: " +
-//       (y - 3) +
-//       "px;";
-//     div.appendChild(divA);
-//   }
-// };
-
-// div.onmouseup = function() {
-//   is_paint = false;
-// };
-
-// ctx.fillStyle = "red";
-// ctx.fillRect(0, 0, 100, 100);
-// ctx.strokeStyle = "blue";
-// ctx.strokeRect(0, 0, 100, 100);
-// ctx.clearRect(50, 50, 10, 10);
-
-// ctx.beginPath();
-// ctx.fillStyle = "lightgreen";
-// ctx.moveTo(120, 120);
-// ctx.lineTo(100, 150);
-// ctx.lineTo(140, 120);
-// ctx.fill();
-
-// ctx.beginPath();
-// ctx.fillStyle = "lightpink";
-// ctx.arc(200, 50, 40, 0, Math.PI / 2);
-// ctx.stroke();
+var tools = {
+  cur_tool: ""
+};
 
 function setPageSize(ele) {
   var pageWidth = document.documentElement.clientWidth;
@@ -68,48 +8,6 @@ function setPageSize(ele) {
   ele.width = pageWidth;
   ele.height = pageHeight;
 }
-
-var canvas = document.getElementById("sample");
-
-var ctx = canvas.getContext("2d");
-setPageSize(canvas);
-window.onresize = function() {
-  setPageSize(canvas);
-};
-
-function drawCircle(ctx, x, y, radius, color, deg) {
-  ctx.beginPath();
-  ctx.arc(x, y, radius, 0, deg);
-  ctx.fillStyle = color;
-  ctx.fill();
-}
-
-var is_paint = false;
-var last_point = null;
-
-canvas.onmousedown = function(event) {
-  is_paint = true;
-  var x = event.clientX;
-  var y = event.clientY;
-  console.log("x:" + x + " y:" + y);
-  last_point = { x: x, y: y };
-  drawCircle(ctx, x, y, 6, "lightblue", Math.PI * 2);
-};
-
-canvas.onmousemove = function(event) {
-  if (is_paint) {
-    var x = event.clientX;
-    var y = event.clientY;
-    drawCircle(ctx, x, y, 6, "lightblue", Math.PI * 2);
-    drawLine(ctx, last_point.x, last_point.y, x, y, "lightblue", 12);
-    last_point.x = x;
-    last_point.y = y;
-  }
-};
-
-canvas.onmouseup = function(event) {
-  is_paint = false;
-};
 
 function drawLine(ctx, x1, y1, x2, y2, color, width) {
   ctx.beginPath();
@@ -120,3 +18,99 @@ function drawLine(ctx, x1, y1, x2, y2, color, width) {
   ctx.stroke();
   ctx.closePath();
 }
+
+function drawCircle(ctx, x, y, radius, color, deg) {
+  ctx.beginPath();
+  ctx.arc(x, y, radius, 0, deg);
+  ctx.fillStyle = color;
+  ctx.fill();
+}
+
+function listenUser(canvas) {
+  if ("ontouchstart" in document.documentElement) {
+    canvas.ontouchstart = function(event) {
+      var x = event.touches[0].clientX;
+      var y = event.touches[0].clientY;
+      console.log("x:" + x + "y:" + y);
+      turnon = true;
+      if (tools.cur_tool === "brush" && turnon) {
+        draw_start = { x: x, y: y };
+        drawCircle(ctx, x, y, 6, "lightblue", Math.PI * 2);
+      } else if (tools.cur_tool === "erasor" && turnon) {
+        ctx.clearRect(x - 5, y - 5, 10, 10);
+      }
+    };
+
+    canvas.ontouchmove = function(event) {
+      var x = event.touches[0].clientX;
+      var y = event.touches[0].clientY;
+      if (tools.cur_tool === "brush" && turnon) {
+        drawCircle(ctx, x, y, 6, "lightblue", Math.PI * 2);
+        drawLine(ctx, x, y, draw_start.x, draw_start.y, "lightblue", 12);
+        draw_start.x = x;
+        draw_start.y = y;
+      } else if (tools.cur_tool === "erasor" && turnon) {
+        ctx.clearRect(x - 5, y - 5, 10, 10);
+      }
+    };
+
+    canvas.ontouchend = function(event) {
+      turnon = false;
+    };
+  } else {
+    canvas.onmousedown = function(event) {
+      var x = event.clientX;
+      var y = event.clientY;
+      turnon = true;
+      if (tools.cur_tool === "brush" && turnon) {
+        draw_start = { x: x, y: y };
+        drawCircle(ctx, x, y, 6, "lightblue", Math.PI * 2);
+      } else if (tools.cur_tool === "erasor" && turnon) {
+        ctx.clearRect(x - 5, y - 5, 10, 10);
+      }
+    };
+
+    canvas.onmousemove = function(event) {
+      var x = event.clientX;
+      var y = event.clientY;
+      if (tools.cur_tool === "brush" && turnon) {
+        drawCircle(ctx, x, y, 6, "lightblue", Math.PI * 2);
+        drawLine(ctx, x, y, draw_start.x, draw_start.y, "lightblue", 12);
+        draw_start.x = x;
+        draw_start.y = y;
+      } else if (tools.cur_tool === "erasor" && turnon) {
+        ctx.clearRect(x - 5, y - 5, 10, 10);
+      }
+    };
+    canvas.onmouseup = function(event) {
+      turnon = false;
+    };
+  }
+
+  clear.onclick = function() {
+    width = document.documentElement.clientWidth;
+    height = document.documentElement.clientHeight;
+    ctx.clearRect(0, 0, width, height);
+  };
+}
+
+var canvas = document.getElementById("sample");
+var ctx = canvas.getContext("2d");
+var turnon = false;
+var draw_start = null;
+var clear = document.getElementById("clear");
+
+setPageSize(canvas);
+
+window.onresize = function() {
+  setPageSize(canvas);
+};
+
+var buttons = document.getElementById("tools").getElementsByTagName("button");
+for (var i = 0; i < buttons.length; ++i) {
+  buttons[i].onclick = function() {
+    tools.cur_tool = this.id;
+  };
+}
+
+listenUser(canvas);
