@@ -1,0 +1,145 @@
+body {
+    margin: 0;
+}
+
+ul, ol {
+    margin: 0 0;
+    padding: 0 0;
+    list-style: none;
+}
+
+#sample {
+    background: lightcoral;
+    position: fix;
+    vertical-align: top;
+    top: 0;
+    left: 0;
+}
+
+#tools {
+    position: absolute;
+    left: 50px;
+    top: 50px;
+}
+
+#tools>ul>li {
+    float: left;
+    margin-right: 2em;
+}
+
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.icon {
+    width: 2em;
+    height: 2em;
+    vertical-align: -0.15em;
+    fill: white;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+#tools .active {
+    fill: black;
+    transform: scale(1.2);
+}
+
+#colorpicker {
+    position: absolute;
+    top: 130px;
+    left: 50px;
+    display: none;
+}
+
+#colorpicker>li {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    transition: all 0.3s;
+}
+
+#red {
+    background-color: red;
+}
+
+#lightyellow {
+    background-color: lightyellow;
+}
+
+#lightgrey {
+    background-color: lightgrey;
+}
+
+ol .active {
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.85);
+    transform: scale(1.5);
+}
+
+#sizes {
+    position: absolute;
+    left: 26px;
+    top: 270px;
+    display: none;
+}
+
+#sizes li:hover {
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.55)
+}
+
+#sizes li#thin {
+    border-top: 3px solid black;
+    width: 70px;
+    margin-bottom: 10px;
+    position: relative;
+    vertical-align: top;
+}
+
+#sizes li.afterclickthin::after {
+    content: "";
+    width: 3px;
+    height: 3px;
+    position: absolute;
+    right: -15px;
+    top: -4px;
+    border-radius: 50%;
+    background: black;
+}
+
+#sizes li#thick {
+    border-top: 6px solid black;
+    width: 70px;
+    margin-bottom: 10px;
+}
+
+#sizes li.afterclickthick::after {
+    content: "";
+    width: 6px;
+    height: 6px;
+    position: absolute;
+    right: -17px;
+    top: 13px;
+    border-radius: 50%;
+    background: black;
+}
+
+#sizes li#bold {
+    border-top: 9px solid black;
+    width: 70px;
+    margin-bottom: 10px;
+}
+
+#sizes li.afterclickbold::after {
+    content: "";
+    width: 9px;
+    height: 9px;
+    position: absolute;
+    right: -19px;
+    top: 29px;
+    border-radius: 50%;
+    background: black;
+    display: block;
+}

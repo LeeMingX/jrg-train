@@ -41,6 +41,7 @@ function listenUser(canvas) {
     };
 
     canvas.ontouchmove = function(event) {
+      event.preventDefault();
       var x = event.touches[0].clientX;
       var y = event.touches[0].clientY;
       if (tools.cur_tool === "brush" && turnon) {
@@ -118,11 +119,13 @@ brush.onclick = function() {
   tools.cur_tool = this.id;
   if (!("active" in this.classList)) {
     this.classList.add("active");
+    ctx.strokeStyle = "black";
+    ctx.lineWidth = 3;
     eraser.classList.remove("active");
     clear.classList.remove("active");
     colorpicker.style.display = "block";
     sizes.style.display = "block";
-    thin.className = "";
+    thin.className = "afterclickthin";
     thick.className = "";
     bold.className = "";
   }
@@ -162,30 +165,47 @@ save.onclick = function() {
 };
 
 red.onclick = function() {
-  red.classList.add("active");
-  ctx.strokeStyle = "red";
-  ctx.fillStyle = "red";
-
-  lightyellow.classList.remove("active");
-  lightgrey.classList.remove("active");
+  if (this.classList.contains("active")) {
+    ctx.strokeStyle = "black";
+    ctx.fillStyle = "black";
+    this.classList.remove("active");
+  } else {
+    red.classList.add("active");
+    ctx.strokeStyle = "red";
+    ctx.fillStyle = "red";
+    lightyellow.classList.remove("active");
+    lightgrey.classList.remove("active");
+  }
 };
 
 lightyellow.onclick = function() {
-  lightyellow.classList.add("active");
-  ctx.strokeStyle = "lightyellow";
-  ctx.fillStyle = "lightyellow";
+  if (this.classList.contains("active")) {
+    ctx.strokeStyle = "black";
+    ctx.fillStyle = "black";
+    this.classList.remove("active");
+  } else {
+    lightyellow.classList.add("active");
+    ctx.strokeStyle = "lightyellow";
+    ctx.fillStyle = "lightyellow";
 
-  red.classList.remove("active");
-  lightgrey.classList.remove("active");
+    red.classList.remove("active");
+    lightgrey.classList.remove("active");
+  }
 };
 
 lightgrey.onclick = function() {
-  lightgrey.classList.add("active");
-  ctx.strokeStyle = "lightgrey";
-  ctx.fillStyle = "lightgrey";
+  if (this.classList.contains("active")) {
+    ctx.strokeStyle = "black";
+    ctx.fillStyle = "black";
+    this.classList.remove("active");
+  } else {
+    lightgrey.classList.add("active");
+    ctx.strokeStyle = "lightgrey";
+    ctx.fillStyle = "lightgrey";
 
-  red.classList.remove("active");
-  lightyellow.classList.remove("active");
+    red.classList.remove("active");
+    lightyellow.classList.remove("active");
+  }
 };
 
 thin.onclick = function() {
