@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      #first {
+        outline: 1px solid green;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+      #second {
+        border: 1px solid black;
+      }
+      #second span {
+        display: inline-block;
+        text-align: justify;
+        width: 100px;
+        outline: 1px solid blue;
+        line-height: 20px;
+        height: 20px;
+        overflow: hidden;
+      }
+      #second span::after {
+        content: "";
+        display: inline-block;
+        width: 100%;
+      }
+      #third {
+        outline: 1px solid red;
+        line-height: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        text-align: center;
+      }
+      #forth {
+        border: 1px solid purple;
+        padding-left: 30%;
+        padding-right: 30%;
+      }
+      #forth span {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>请写出一行文本过长就变成省略号的例子</h1>
+    <div id="first">
+      <span
+        >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti,
+        tempore dolorum? Doloremque illum officia vel animi, ipsam unde natus
+        impedit provident officiis aliquam possimus nulla debitis libero ratione
+        deserunt. Accusantium.</span
+      >
+    </div>
+    <h1>请写出「姓名」与「联系方式」两端对齐的例子</h1>
+    <div id="second">
+      <span>姓名</span> <br />
+      <span>联系方式</span>
+    </div>
+
+    <h1>请写出一个高 40px 的 div，里面的文字垂直居中</h1>
+    <div id="third">
+      Hello world
+    </div>
+    <h1>请写出多行文本超出部分变成省略号的例子</h1>
+    <div id="forth">
+      <span
+        >Lorem ipsum dolor, sit amet consectetur adipisicing elit. A
+        voluptatibus, animi sunt explicabo dolores officiis velit facere
+        repudiandae voluptate debitis reiciendis molestias incidunt rem quas
+        alias cupiditate ullam fuga distinctio?</span
+      >
+    </div>
+  </body>
+</html>
