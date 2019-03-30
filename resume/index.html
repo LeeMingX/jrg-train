@@ -13,24 +13,55 @@
         fill: currentColor;
         overflow: hidden;
       }
+      .mainpage {
+        width: 100%;
+        height: 100%;
+        background-color: lightgrey;
+        position: fixed;
+        z-index: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .mainpage-active {
+        display: none;
+      }
     </style>
     <title>mouselee的简历</title>
   </head>
 
   <body>
-    <div class="topNavBar">
+    <div id="site-welcome" class="mainpage">
+      <div class="loading"></div>
+    </div>
+    <div id="top" class="topNavBar">
       <div class="topNavBar-inner clearfix">
         <div class="logo">
           <span class="rs">RS</span><span class="card">card</span>
         </div>
         <nav>
-          <ul class="clearfix">
-            <li><a href="#">关于</a></li>
-            <li><a href="#">技能</a></li>
-            <li><a href="#">作品集</a></li>
-            <li><a href="#">工作经历</a></li>
+          <ul id="navbar" class="clearfix">
+            <li><a href="#siteAbout">关于</a></li>
+            <li><a href="#siteSkills">技能</a></li>
+            <li><a href="#siteProjects">作品集</a></li>
+            <li class="menuTrigger">
+              <a href="#">工作经历</a>
+              <ul class="submenu">
+                <li>MicroSoft</li>
+                <li>Apple</li>
+                <li>Google</li>
+              </ul>
+            </li>
             <li><a href="#">薪资</a></li>
-            <li><a href="#">博客</a></li>
+            <li class="menuTrigger">
+              <a href="#">博客</a>
+              <ul class="submenu">
+                <li>Github</li>
+                <li>JianShu</li>
+                <li>ZhiHu</li>
+              </ul>
+            </li>
             <li><a href="#">个人日历</a></li>
             <li><a href="#">联系方式</a></li>
             <li><a href="#">其它</a></li>
@@ -42,7 +73,7 @@
       <div class="mask"></div>
     </div>
     <main class="main">
-      <div class="userCard">
+      <div class="userCard" id="siteAbout">
         <div class="userCard-info  clearfix">
           <div class="picture">
             <img
@@ -118,7 +149,7 @@
           <p>2018-05-07</p>
         </div>
       </section> -->
-      <section class="skills">
+      <section class="skills" id="siteSkills">
         <h2 class="secondHeader">专业技能</h2>
         <ol class="clearfix">
           <li>
@@ -159,7 +190,7 @@
           </li>
         </ol>
       </section>
-      <section class="projects">
+      <section class="projects" id="siteProjects">
         <h2 class="secondHeader">作品集</h2>
         <nav>
           <ol class="clearfix">
@@ -189,6 +220,39 @@
       js.onclick = function() {
         progress.className = "fillbar2";
       };
+    </script>
+    <script>
+      setTimeout(function() {
+        document.getElementById("site-welcome").className = "mainpage-active";
+      }, 1000);
+      window.onscroll = function(event) {
+        var y = window.scrollY;
+        var navbar = document.getElementById("top");
+        if (y > 0) {
+          navbar.classList.add("sticky");
+        } else {
+          navbar.classList.remove("sticky");
+        }
+      };
+      var submenus = document.querySelectorAll("nav>#navbar>li");
+      for (var i = 0; i < submenus.length; ++i) {
+        submenus[i].onmouseenter = function(event) {
+          event.currentTarget.classList.add("active");
+        };
+        submenus[i].onmouseleave = function(event) {
+          event.currentTarget.classList.remove("active");
+        };
+      }
+      var navlinks = document.querySelectorAll("nav>#navbar>li>a");
+      for (var i = 0; i < navlinks.length; ++i) {
+        navlinks[i].onclick = function(event) {
+          event.preventDefault();
+          var target = event.target.getAttribute("href");
+          var trueTarget = document.querySelector(target);
+          var top = trueTarget.offsetTop
+          window.scrollTo(0, top-50)
+        };
+      }
     </script>
   </body>
 </html>

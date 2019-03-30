@@ -27,6 +27,44 @@ ul, ol {
     list-style: none;
 }
 
+.loading {
+    height: 200px;
+    width: 200px;
+    position: relative;
+}
+
+.loading::before, .loading::after {
+    content: "";
+    width: 20px;
+    height: 20px;
+    background-color: lightslategray;
+    position: absolute;
+    border-radius: 50%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    animation: s 2s linear infinite;
+}
+
+.loading::after {
+    animation-delay: 1s;
+}
+
+@keyframes s {
+    0% {
+        width: 5px;
+        height: 5px;
+        opacity: 1;
+    }
+    100% {
+        width: 75px;
+        height: 75px;
+        opacity: 0;
+    }
+}
+
 .clearfix::after {
     content: "";
     display: block;
@@ -34,9 +72,22 @@ ul, ol {
 }
 
 .topNavBar {
-    margin: 16px 0 16px 0;
+    padding: 16px 0 16px 0;
     position: fixed;
     width: 100%;
+    z-index: 1;
+    color: white;
+    font-size: 13px;
+    transition: ease-in 0.5s;
+}
+
+.topNavBar.sticky {
+    background-color: white;
+    padding: 10px 0 10px 0;
+    box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.75);
+    color: #9A9BA1;
+    font-size: 15px;
+    font: bold;
 }
 
 .topNavBar .topNavBar-inner {
@@ -59,20 +110,67 @@ ul, ol {
     float: left;
     margin-left: 18px;
     margin-right: 18px;
+    position: relative;
+}
+
+.topNavBar nav .active>.submenu {
+    background-color: white;
+    color: black;
+    display: block;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    white-space: nowrap;
+    animation: mouseSlide 0.3s;
+}
+
+@keyframes mouseSlide {
+    0% {
+        margin-right: 100%;
+    }
+    100% {
+        margin-right: 0;
+    }
+}
+
+.topNavBar nav .submenu>li {
+    margin: 22px 33px 5px 40px;
+}
+
+.topNavBar nav .submenu {
+    display: none;
 }
 
 .topNavBar nav>ul>li>a {
-    color: #c2c4c6;
-    font-size: 10px;
+    color: inherit;
+    font-size: inherit;
     font-weight: bold;
     display: block;
     border-top: 3px solid transparent;
     border-bottom: 3px solid transparent;
     padding-bottom: 11px;
+    position: relative;
 }
 
-.topNavBar nav>ul>li>a:hover {
-    border-bottom: 3px #d86f6f solid;
+.topNavBar nav>ul>li.active>a::after {
+    content: "";
+    display: block;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    position: absolute;
+    background-color: #d86f6f;
+    animation: k 0.3s;
+}
+
+@keyframes k {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
 }
 
 .topNavBar .logo {
@@ -360,12 +458,10 @@ h2.secondHeader {
     margin-top: 30px;
 }
 
-.bigimage,
-.smalltop,
-.smallbottom {
+.bigimage, .smalltop, .smallbottom {
     position: absolute;
     display: block;
-    box-shadow: 0px 0px 10px 1px rgba(191,186,90,0.84);
+    box-shadow: 0px 0px 10px 1px rgba(191, 186, 90, 0.84);
 }
 
 .smalltop {
