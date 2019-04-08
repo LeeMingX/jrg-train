@@ -247,10 +247,29 @@
       for (var i = 0; i < navlinks.length; ++i) {
         navlinks[i].onclick = function(event) {
           event.preventDefault();
-          var target = event.target.getAttribute("href");
-          var trueTarget = document.querySelector(target);
-          var top = trueTarget.offsetTop
-          window.scrollTo(0, top-50)
+          var top = document.querySelector(
+            event.currentTarget.getAttribute("href")
+          ).offsetTop;
+          var begin = window.pageYOffset;
+          var goal = top;
+          var v = ((Math.abs(begin - goal) / 500) * 1000) / 30;
+          var animation = setInterval(() => {
+            if (begin > goal) {
+              window.scrollTo(0, begin - v);
+              begin -= v;
+              if (begin <= goal) {
+                console.log(begin);
+                window.clearInterval(animation);
+              }
+            } else {
+              window.scrollTo(0, begin + v);
+              begin += v;
+              if (begin > goal) {
+                console.log(begin);
+                window.clearInterval(animation);
+              }
+            }
+          }, 1000 / 20);
         };
       }
     </script>
