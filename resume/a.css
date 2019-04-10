@@ -79,6 +79,15 @@ ol {
     clear: both;
 }
 
+[data-x].offset {
+    transform: translateY(0);
+    transition: all 1s;
+}
+
+[data-x] {
+    transform: translateY(50px);
+}
+
 .topNavBar {
     padding: 16px 0 16px 0;
     position: fixed;
@@ -161,7 +170,8 @@ ol {
     position: relative;
 }
 
-.topNavBar nav>ul>li.active>a::after {
+.topNavBar nav>ul>li.active>a::after,
+.topNavBar nav>ul>li.highlight>a::after {
     content: "";
     display: block;
     top: 100%;
@@ -365,6 +375,7 @@ h2.secondHeader {
     height: 5px;
     background-color: #F7E2E2;
     border-radius: 2px;
+    overflow: hidden;
 }
 
 .skills .progressbar .progress {
@@ -372,6 +383,12 @@ h2.secondHeader {
     width: 50%;
     background-color: #D86F6F;
     border-radius: 2px;
+    transform: translateX(0);
+    transition: all 1s;
+}
+
+.skills .progressbar .allleft {
+    transform: translateX(-100%);
 }
 
 .skills ol li {

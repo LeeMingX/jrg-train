@@ -10,6 +10,23 @@ js.onclick = function () {
 setTimeout(function () {
     document.getElementById("site-welcome").className = "mainpage-active";
 }, 1000);
+
+var specials = document.querySelectorAll("[data-x]")
+
+function find_min(n) {
+    var min = Number.MAX_VALUE;
+    for (var sn = 0; sn < n.length; ++sn) {
+        if (n[sn] < min) {
+            min = n[sn];
+        }
+    }
+    return min;
+}
+
+setTimeout(() => {
+    window.scrollTo(0, 1);
+}, 1000)
+
 window.onscroll = function (event) {
     var y = window.scrollY;
     var navbar = document.getElementById("top");
@@ -17,6 +34,34 @@ window.onscroll = function (event) {
         navbar.classList.add("sticky");
     } else {
         navbar.classList.remove("sticky");
+    }
+
+    var minimal_distance = [];
+    for (var i = 0; i < specials.length; ++i) {
+        minimal_distance.push(Math.abs(y - specials[i].offsetTop));
+    }
+    for (var i = 0; i < specials.length; ++i) {
+        if (i === minimal_distance.indexOf(find_min(minimal_distance))) {
+            if (specials[i].id === "siteSkills") {
+                var prs = document.querySelectorAll(".progress");
+                for (var j = 0; j < prs.length; ++j) {
+                    prs[j].classList.remove("allleft");
+                }
+            }
+            var a = document.querySelector("a[href='#" + specials[i].id + "']");
+            a.parentNode.classList.add("highlight");
+            specials[i].classList.add("offset")
+        } else {
+            if (specials[i].id === "siteSkills") {
+                var prs = document.querySelectorAll(".progress");
+                for (var j = 0; j < prs.length; ++j) {
+                    prs[j].classList.add("allleft");
+                }
+            }
+            var a = document.querySelector("a[href='#" + specials[i].id + "']");
+            a.parentNode.classList.remove("highlight");
+            specials[i].classList.remove("offset")
+        }
     }
 };
 var submenus = document.querySelectorAll("nav>#navbar>li");
@@ -43,7 +88,7 @@ for (var i = 0; i < navlinks.length; ++i) {
             TWEEN.update(time);
         }
         requestAnimationFrame(animate);
-        var t = Math.abs((goal-begin)/500);
+        var t = Math.abs((goal - begin) / 500);
         if (t > 3) t = 3;
 
         var coords = {
