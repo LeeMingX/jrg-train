@@ -210,68 +210,7 @@
       </section>
     </main>
     <script src="//at.alicdn.com/t/font_1079454_bh1ezk4jbn5.js"></script>
-    <script>
-      all.onclick = function() {
-        progress.className = "fillbar";
-      };
-      frame.onclick = function() {
-        progress.className = "fillbar1";
-      };
-      js.onclick = function() {
-        progress.className = "fillbar2";
-      };
-    </script>
-    <script>
-      setTimeout(function() {
-        document.getElementById("site-welcome").className = "mainpage-active";
-      }, 1000);
-      window.onscroll = function(event) {
-        var y = window.scrollY;
-        var navbar = document.getElementById("top");
-        if (y > 0) {
-          navbar.classList.add("sticky");
-        } else {
-          navbar.classList.remove("sticky");
-        }
-      };
-      var submenus = document.querySelectorAll("nav>#navbar>li");
-      for (var i = 0; i < submenus.length; ++i) {
-        submenus[i].onmouseenter = function(event) {
-          event.currentTarget.classList.add("active");
-        };
-        submenus[i].onmouseleave = function(event) {
-          event.currentTarget.classList.remove("active");
-        };
-      }
-      var navlinks = document.querySelectorAll("nav>#navbar>li>a");
-      for (var i = 0; i < navlinks.length; ++i) {
-        navlinks[i].onclick = function(event) {
-          event.preventDefault();
-          var top = document.querySelector(
-            event.currentTarget.getAttribute("href")
-          ).offsetTop;
-          var begin = window.pageYOffset;
-          var goal = top;
-          var v = ((Math.abs(begin - goal) / 500) * 1000) / 30;
-          var animation = setInterval(() => {
-            if (begin > goal) {
-              window.scrollTo(0, begin - v);
-              begin -= v;
-              if (begin <= goal) {
-                console.log(begin);
-                window.clearInterval(animation);
-              }
-            } else {
-              window.scrollTo(0, begin + v);
-              begin += v;
-              if (begin > goal) {
-                console.log(begin);
-                window.clearInterval(animation);
-              }
-            }
-          }, 1000 / 20);
-        };
-      }
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.3.0/Tween.min.js"></script>
+    <script src="b.js"></script>
   </body>
 </html>
