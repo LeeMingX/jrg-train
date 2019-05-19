@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
 img {
     width: 300px;
     height: 200px;
@@ -34,9 +40,43 @@ img {
 
 #o-images {
     border: 10px solid lightcoral;
-    margin: 300px auto;
+    margin: 100px auto;
     width: 300px;
     height: 200px;
     display: flex;
     overflow: hidden;
+}
+
+#common-window {
+    margin-top: 100px;
+}
+
+#common-images {
+    border: 5px solid lightsalmon;
+    height: 210px;
+    width: 310px;
+    margin: 50px auto;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+}
+
+#common-images>img {
+    top: 0;
+    position: absolute;
+    transition: all 0.5s;
+}
+
+.leave {
+    transform: translateX(-100%);
+}
+
+.current {
+    transform: translateX(0);
+    left: 0;
+    z-index: 1;
+}
+
+.enter {
+    transform: translateX(100%);
 }
