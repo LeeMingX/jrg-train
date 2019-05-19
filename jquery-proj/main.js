@@ -56,7 +56,7 @@ function slideSeamless() {
         for (let i = 0; i < $oImages.length; ++i) {
             locs[i] -= 300
             if (locs[i] < -300) {
-                locs[i] = ($oImages.length-1)*300 + (-300)
+                locs[i] = ($oImages.length - 1) * 300 + (-300)
                 $($oImages[i]).removeAttr("style").css({
                     "transform": "translateX(" + (locs[i] - ucLocs[i]) + "px)"
                 })
@@ -69,3 +69,16 @@ function slideSeamless() {
         }
     }, 3000)
 }
+
+let cn = 1;
+
+$("#common-images> :nth-child(1)").addClass("current")
+$("#common-images> :nth-last-child(-n+2)").addClass("enter")
+$("#common-images> :nth-child(1)").removeAttr("style")
+setInterval(() => {
+    $(`#common-images> :nth-child(${cn % 3 == 0 ? 3 : cn % 3})`).removeClass("current").addClass("leave").one("transitionend", (e) => {
+        $(e.currentTarget).removeClass("leave").addClass("enter");
+    });
+    $(`#common-images> :nth-child(${(cn+1) % 3 == 0 ? 3 : (cn+1) % 3})`).removeClass("enter").addClass("current")
+    cn += 1;
+}, 1500);
