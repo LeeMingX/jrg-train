@@ -2,10 +2,17 @@ let buttons = $("#buttons > div")
 let n = 0
 let timer = slide(buttons.length)
 
+
+let $oImages = $("#o-images > img")
+let ucLocs = []
+let locs = []
+
 {
-    for (let i = 0; i < buttons.length; ++i) {
-        viewPicture($(buttons[i]))
+    for (var i = 0; i < $oImages.length; ++i) {
+        locs.push(i * 300)
+        ucLocs.push(i * 300)
     }
+    slideSeamless()
 }
 
 {
@@ -42,4 +49,23 @@ function slide(size) {
         animation(n % size)
         n += 1
     }, 1000)
+}
+
+function slideSeamless() {
+    return setInterval(() => {
+        for (let i = 0; i < $oImages.length; ++i) {
+            locs[i] -= 300
+            if (locs[i] < -300) {
+                locs[i] = ($oImages.length-1)*300 + (-300)
+                $($oImages[i]).removeAttr("style").css({
+                    "transform": "translateX(" + (locs[i] - ucLocs[i]) + "px)"
+                })
+            } else {
+                $($oImages[i]).removeAttr("style").css({
+                    "transform": "translateX(" + (locs[i] - ucLocs[i]) + "px)",
+                    "transition": "all 1s"
+                })
+            }
+        }
+    }, 3000)
 }
