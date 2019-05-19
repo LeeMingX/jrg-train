@@ -7,6 +7,8 @@ let $oImages = $("#o-images > img")
 let ucLocs = []
 let locs = []
 
+let cn;
+
 {
     for (var i = 0; i < $oImages.length; ++i) {
         locs.push(i * 300)
@@ -24,6 +26,10 @@ let locs = []
     $("#window").on("mouseleave", event => {
         timer = slide(buttons.length)
     })
+}
+
+{
+    reg_slide()
 }
 
 function viewPicture($button) {
@@ -70,15 +76,38 @@ function slideSeamless() {
     }, 3000)
 }
 
-let cn = 1;
+function reg_slide() {
+    reg_slide_init()
 
-$("#common-images> :nth-child(1)").addClass("current")
-$("#common-images> :nth-last-child(-n+2)").addClass("enter")
-$("#common-images> :nth-child(1)").removeAttr("style")
-setInterval(() => {
-    $(`#common-images> :nth-child(${cn % 3 == 0 ? 3 : cn % 3})`).removeClass("current").addClass("leave").one("transitionend", (e) => {
-        $(e.currentTarget).removeClass("leave").addClass("enter");
-    });
-    $(`#common-images> :nth-child(${(cn+1) % 3 == 0 ? 3 : (cn+1) % 3})`).removeClass("enter").addClass("current")
-    cn += 1;
-}, 1500);
+    return setInterval(() => {
+        fn = cn % 3 == 0 ? 3 : cn % 3;
+        sn = (cn + 1) % 3 == 0 ? 3 : (cn + 1) % 3;
+        reg_slide_node_leave(get_img_node(fn)).one("transitionend", (e) => {
+            reg_slide_node_enter($(e.currentTarget));
+        });
+        reg_slide_node_current(get_img_node(sn))
+        cn += 1;
+    }, 1500);
+}
+
+function reg_slide_init() {
+    cn = 1
+    get_img_node(cn).addClass("current").siblings().addClass("enter")
+    get_img_node(cn).removeAttr("style")
+}
+
+function reg_slide_node_enter($node) {
+    return $node.removeClass("current leave").addClass("enter")
+}
+
+function reg_slide_node_current($node) {
+    return $node.removeClass("enter leave").addClass("current")
+}
+
+function reg_slide_node_leave($node) {
+    return $node.removeClass("current enter").addClass("leave")
+}
+
+function get_img_node(n) {
+    return $(`#common-images> :nth-child(${n})`)
+}
