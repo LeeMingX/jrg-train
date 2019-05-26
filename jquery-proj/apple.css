@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #F2F2F2;
+}
+
+header {
+    margin-top: 150px;
+    padding: 0 auto 20px;
+    text-align: center;
+    font-size: 60px;
+    font-family: 'AmericanTypewriter'
+}
+
+#container {
+    width: 920px;
+    height: 400px;
+    margin: 50px auto;
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.35);
+}
+
+#container>#floatpage {
+    display: flex;
+    overflow: hidden;
+}
+
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+#floatpage>img {
+    transition: all 0.5s;
+}
+
+#floatbtn {
+    width: 920px;
+    margin: 0 auto;
+    background: linear-gradient(to bottom, rgba(225, 225, 225, 1) 0%, rgba(255, 255, 255, 1) 43%, rgba(234, 234, 234, 1) 100%);
+    box-shadow: 0px 0px 10px -1px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+}
+
+#floatbtn>ul {
+    width: 28%;
+    margin: 0 auto;
+}
+
+#floatbtn>ul>li {
+    width: 23%;
+    height: 50px;
+    float: left;
+    list-style: none;
+    text-align: center;
+    margin-left: 4px;
+}
+
+.icon {
+    width: 50px;
+    height: 40px;
+    vertical-align: -2em;
+    fill: currentColor;
+    overflow: hidden;
+}
+
+.special {
+    background: radial-gradient(ellipse at center, rgba(249, 248, 248, 1) 0%, rgba(170, 170, 170, 1) 100%);
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.67);
+}
+
+.special::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: 22px;
+    border: 8px solid transparent;
+    border-top: 10px solid rgba(255, 255, 255, 0.87);
+}
+
+footer {
+    margin-top: 150px;
+    margin-bottom: 20px;
+    padding: 0 auto 20px;
+    text-align: center;
+    font-size: 20px;
+    color: lightgray;
+    font-family: 'Hei';
+}
