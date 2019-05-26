@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #block {
+            margin-top: 100px;
+            text-align: center;
+        }
+
+        .btn {
+            border: grey 1px solid;
+            border-radius: 15px;
+            background-color: gray;
+            padding: 20px 30px;
+            cursor: default;
+            position: relative;
+        }
+
+        @keyframes fade-in {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fade-out {
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .fadein {
+            animation: fade-in;
+            animation-duration: 0.5s;
+        }
+
+        .fadeout {
+            animation: fade-out;
+            animation-duration: 0.5s;
+        }
+
+        #float::before {
+            content: "";
+            position: absolute;
+            top: 25%;
+            left: 801px;
+            display: inline-block;
+            border: 10px solid transparent;
+            border-right: 10px solid red;
+        }
+
+        #float::after {
+            content: "这是一个惊喜！";
+            display: inline-block;
+            width: 80px;
+            height: 50px;
+            left: 57%;
+            position: absolute;
+            background: red;
+            border-radius: 15px;
+            padding: 15px 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="block">
+        <span class="btn">Click Me！</span>
+        <span id="float"></span>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $float = $("#float")
+        first_hide_float()
+        trigger = false
+
+        $(".btn").on("click", (e) => {
+            e.stopPropagation()
+            if (trigger) {
+                hide_float()
+                trigger = false
+            } else {
+                show_float()
+                trigger = true
+            }
+        })
+        $("#float").on("click", (e) => {
+            e.stopPropagation()
+        })
+        $(document.documentElement).on("click", () => {
+            if (trigger) {
+                hide_float()
+                trigger = false
+            }
+        })
+
+        function first_hide_float() {
+            $float.addClass("hide")
+        }
+
+        function hide_float() {
+            $float.removeClass("fadein hide").addClass("fadeout").one("animationend", (e) => {
+                $(e.currentTarget).addClass("hide")
+            })
+        }
+
+        function show_float() {
+            $float.removeClass("fadeout hide").addClass("fadein").show()
+        }
+    </script>
+</body>
+
+</html>
