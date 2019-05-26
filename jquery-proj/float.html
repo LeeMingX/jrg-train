@@ -17,6 +17,10 @@
             text-align: center;
         }
 
+        #float {
+            position: relative;
+        }
+
         .btn {
             border: grey 1px solid;
             border-radius: 15px;
@@ -63,8 +67,8 @@
         #float::before {
             content: "";
             position: absolute;
-            top: 25%;
-            left: 801px;
+            top: 15px;
+            left: 1px;
             display: inline-block;
             border: 10px solid transparent;
             border-right: 10px solid red;
@@ -75,7 +79,7 @@
             display: inline-block;
             width: 80px;
             height: 50px;
-            left: 57%;
+            left: 20px;
             position: absolute;
             background: red;
             border-radius: 15px;
