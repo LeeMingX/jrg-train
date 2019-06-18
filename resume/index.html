@@ -1,142 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="./a.css" />
-    <style type="text/css">
-      .icon {
-        width: 1em;
-        height: 1em;
-        vertical-align: -0.15em;
-        fill: currentColor;
-        overflow: hidden;
-      }
-      .mainpage {
-        width: 100%;
-        height: 100%;
-        background-color: lightgrey;
-        position: fixed;
-        z-index: 2;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
 
-      .mainpage-active {
-        display: none;
-      }
-    </style>
-    <title>mouselee的简历</title>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="./a.css" />
+  <style type="text/css">
+    .icon {
+      width: 1em;
+      height: 1em;
+      vertical-align: -0.15em;
+      fill: currentColor;
+      overflow: hidden;
+    }
 
-  <body>
-    <div id="site-welcome" class="mainpage">
-      <div class="loading"></div>
-    </div>
-    <div id="top" class="topNavBar">
-      <div class="topNavBar-inner clearfix">
-        <div class="logo">
-          <span class="rs">RS</span><span class="card">card</span>
-        </div>
-        <nav>
-          <ul id="navbar" class="clearfix">
-            <li><a href="#siteAbout">关于</a></li>
-            <li><a href="#siteSkills">技能</a></li>
-            <li><a href="#siteProjects">作品集</a></li>
-            <li class="menuTrigger">
-              <a href="#">工作经历</a>
-              <ul class="submenu">
-                <li>MicroSoft</li>
-                <li>Apple</li>
-                <li>Google</li>
-              </ul>
-            </li>
-            <li><a href="#">薪资</a></li>
-            <li class="menuTrigger">
-              <a href="#">博客</a>
-              <ul class="submenu">
-                <li>Github</li>
-                <li>JianShu</li>
-                <li>ZhiHu</li>
-              </ul>
-            </li>
-            <li><a href="#">个人日历</a></li>
-            <li><a href="#">联系方式</a></li>
-            <li><a href="#">其它</a></li>
-          </ul>
-        </nav>
+    .mainpage {
+      width: 100%;
+      height: 100%;
+      background-color: lightgrey;
+      position: fixed;
+      z-index: 2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .mainpage-active {
+      display: none;
+    }
+  </style>
+  <title>mouselee的简历</title>
+</head>
+
+<body>
+  <div id="site-welcome" class="mainpage">
+    <div class="loading"></div>
+  </div>
+  <div id="top" class="topNavBar">
+    <div class="topNavBar-inner clearfix">
+      <div class="logo">
+        <span class="rs">RS</span><span class="card">card</span>
       </div>
+      <nav>
+        <ul id="navbar" class="clearfix">
+          <li><a href="#siteAbout">关于</a></li>
+          <li><a href="#siteSkills">技能</a></li>
+          <li><a href="#siteProjects">作品集</a></li>
+          <li class="menuTrigger">
+            <a href="#">工作经历</a>
+            <ul class="submenu">
+              <li>MicroSoft</li>
+              <li>Apple</li>
+              <li>Google</li>
+            </ul>
+          </li>
+          <li><a href="#">薪资</a></li>
+          <li class="menuTrigger">
+            <a href="#">博客</a>
+            <ul class="submenu">
+              <li>Github</li>
+              <li>JianShu</li>
+              <li>ZhiHu</li>
+            </ul>
+          </li>
+          <li><a href="#">个人日历</a></li>
+          <li><a href="#">联系方式</a></li>
+          <li><a href="#">其它</a></li>
+        </ul>
+      </nav>
     </div>
-    <div class="banner">
-      <div class="mask"></div>
-    </div>
-    <main class="main">
-      <div data-x class="userCard" id="siteAbout">
-        <div class="userCard-info  clearfix">
-          <div class="picture">
-            <img
-              src="./img/avatar.jpg"
-              style="width: 295px; height: 318px"
-              alt="头像"
-            />
-          </div>
-          <div class="text">
-            <span class="welcome"
-              >Hello
-              <span class="triangle"></span>
-            </span>
-            <h2>Mouse Lee</h2>
-            <p>前端开发工程师？</p>
-            <hr />
-            <dl>
-              <dt>年龄</dt>
-              <dd>25</dd>
-              <dt>地址</dt>
-              <dd>上海 浦东新区</dd>
-              <dt>Email</dt>
-              <dd>work.mouselee@google.com</dd>
-              <dt>联系电话</dt>
-              <dd>14094858394</dd>
-              <dt>空窗期</dt>
-              <dd>2019-12-12前</dd>
-            </dl>
-          </div>
+  </div>
+  <div class="banner">
+    <div class="mask"></div>
+  </div>
+  <main class="main">
+    <div data-x class="userCard" id="siteAbout">
+      <div class="userCard-info  clearfix">
+        <div class="picture">
+          <img src="./img/avatar.jpg" style="width: 295px; height: 318px" alt="头像" />
         </div>
-        <footer class="media">
-          <a href="#">
-            <svg class="icon" aria-hidden="true">
-              <use xlink:href="#icon-github4"></use>
-            </svg>
-          </a>
-          <a href="#">
-            <svg class="icon" aria-hidden="true">
-              <use xlink:href="#icon-weibo"></use>
-            </svg>
-          </a>
-          <a href="#">
-            <svg class="icon" aria-hidden="true">
-              <use xlink:href="#icon-iconset0360"></use>
-            </svg>
-          </a>
-          <a href="#">
-            <svg class="icon" aria-hidden="true">
-              <use xlink:href="#icon-tuitetwitter44"></use>
-            </svg>
-          </a>
-        </footer>
+        <div class="text">
+          <span class="welcome">Hello
+            <span class="triangle"></span>
+          </span>
+          <h2>Mouse Lee</h2>
+          <p>前端开发工程师？</p>
+          <hr />
+          <dl>
+            <dt>年龄</dt>
+            <dd>25</dd>
+            <dt>地址</dt>
+            <dd>上海 浦东新区</dd>
+            <dt>Email</dt>
+            <dd>work.mouselee@google.com</dd>
+            <dt>联系电话</dt>
+            <dd>14094858394</dd>
+            <dt>空窗期</dt>
+            <dd>2019-12-12前</dd>
+          </dl>
+        </div>
       </div>
-      <p class="buttonWrapper">
-        <a href="" class="button" downloaded>DOWNLOAD RESUME</a>
-      </p>
-      <p class="selfintroduction">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi
-        praesentium aspernatur molestias culpa libero. Neque, sit! Illo,
-        cupiditate? Provident corporis voluptatem quod porro esse doloribus
-        veritatis laudantium sequi accusantium officiis!
-      </p>
-      <!-- <section>
+      <footer class="media">
+        <a href="#">
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-github4"></use>
+          </svg>
+        </a>
+        <a href="#">
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-weibo"></use>
+          </svg>
+        </a>
+        <a href="#">
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-iconset0360"></use>
+          </svg>
+        </a>
+        <a href="#">
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-tuitetwitter44"></use>
+          </svg>
+        </a>
+      </footer>
+    </div>
+    <p class="buttonWrapper">
+      <a href="" class="button" downloaded>DOWNLOAD RESUME</a>
+    </p>
+    <p class="selfintroduction">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi
+      praesentium aspernatur molestias culpa libero. Neque, sit! Illo,
+      cupiditate? Provident corporis voluptatem quod porro esse doloribus
+      veritatis laudantium sequi accusantium officiis!
+    </p>
+    <!-- <section>
         <div class="social">
           <h2>Twitter</h2>
           <img src="#" alt="Twitter图标" />
@@ -149,68 +146,86 @@
           <p>2018-05-07</p>
         </div>
       </section> -->
-      <section data-x class="skills" id="siteSkills">
-        <h2 class="secondHeader">专业技能</h2>
-        <ol class="clearfix">
-          <li>
-            <h3>HTML5 &amp; CSS3</h3>
-            <div class="progressbar">
-              <div class="progress"></div>
-            </div>
-          </li>
-          <li>
-            <h3>JavaScript</h3>
-            <div class="progressbar">
-              <div class="progress"></div>
-            </div>
-          </li>
-          <li>
-            <h3>Vue</h3>
-            <div class="progressbar">
-              <div class="progress"></div>
-            </div>
-          </li>
-          <li>
-            <h3>React</h3>
-            <div class="progressbar">
-              <div class="progress"></div>
-            </div>
-          </li>
-          <li>
-            <h3>TypeScript</h3>
-            <div class="progressbar">
-              <div class="progress"></div>
-            </div>
-          </li>
-          <li>
-            <h3>D3.js</h3>
-            <div class="progressbar">
-              <div class="progress"></div>
-            </div>
-          </li>
-        </ol>
-      </section>
-      <section data-x class="projects" id="siteProjects">
-        <h2 class="secondHeader">作品集</h2>
-        <nav>
-          <ol class="clearfix">
-            <li id="all">所有</li>
-            <li id="frame">框架</li>
-            <li id="js">JS原生</li>
-          </ol>
-          <div class="bar">
-            <div class="fillbar" id="progress"></div>
+    <section data-x class="skills" id="siteSkills">
+      <h2 class="secondHeader">专业技能</h2>
+      <ol class="clearfix">
+        <li>
+          <h3>HTML5 &amp; CSS3</h3>
+          <div class="progressbar">
+            <div class="progress"></div>
           </div>
-        </nav>
-        <div class="jobs">
-          <div class="bigimage"><img src="./img/p1.jpg" alt="big" /></div>
-          <div class="smalltop"><img src="./img/p2.jpg" alt="small" /></div>
-          <div class="smallbottom"><img src="./img/p3.jpg" alt="small" /></div>
+        </li>
+        <li>
+          <h3>JavaScript</h3>
+          <div class="progressbar">
+            <div class="progress"></div>
+          </div>
+        </li>
+        <li>
+          <h3>Vue</h3>
+          <div class="progressbar">
+            <div class="progress"></div>
+          </div>
+        </li>
+        <li>
+          <h3>React</h3>
+          <div class="progressbar">
+            <div class="progress"></div>
+          </div>
+        </li>
+        <li>
+          <h3>TypeScript</h3>
+          <div class="progressbar">
+            <div class="progress"></div>
+          </div>
+        </li>
+        <li>
+          <h3>D3.js</h3>
+          <div class="progressbar">
+            <div class="progress"></div>
+          </div>
+        </li>
+      </ol>
+    </section>
+    <section data-x class="projects" id="siteProjects">
+      <h2 class="secondHeader">作品集</h2>
+      <nav>
+        <ol class="clearfix">
+          <li id="all">所有</li>
+          <li id="frame">框架</li>
+          <li id="js">JS原生</li>
+        </ol>
+        <div class="bar">
+          <div class="fillbar" id="progress"></div>
         </div>
-      </section>
-    </main>
-    <script src="//at.alicdn.com/t/font_1079454_bh1ezk4jbn5.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.3.0/Tween.min.js"></script>
-    <script src="b.js"></script>
-  </body>
+      </nav>
+      <div class="jobs">
+        <div class="bigimage"><img src="./img/p1.jpg" alt="big" /></div>
+        <div class="smalltop"><img src="./img/p2.jpg" alt="small" /></div>
+        <div class="smallbottom"><img src="./img/p3.jpg" alt="small" /></div>
+      </div>
+    </section>
+    <section data-x class="projects" id="leaveMessage">
+      <h2 class="secondHeader">留言板</h2>
+      <form id="message">
+        <label for="author">
+          作者：
+          <input type="text" name="author">
+        </label>
+        <label for="comment">
+          评论：
+          <input type="text" name="comment">
+        </label>
+        <input type="submit" value="提交">
+      </form>
+      <ol id="message-display"></ol>
+    </section>
+  </main>
+  <script src="//at.alicdn.com/t/font_1079454_bh1ezk4jbn5.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.3.0/Tween.min.js"></script>
+  <script src="node_modules/leancloud-storage/dist/av-min.js"></script>
+  <script src="b.js"></script>
+  <script src="message.js"></script>
+</body>
+
 </html>

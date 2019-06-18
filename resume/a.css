@@ -502,3 +502,51 @@ h2.secondHeader {
     left: 68.4%;
     top: 51.8%;
 }
+
+#message {
+    margin-top: 40px;
+}
+
+#message>label {
+    display: block;
+    margin: auto auto;
+}
+
+#message>input[type=text] {
+    border-radius: 3px;
+    border-style: none;
+    border: 1px solid grey;
+    width: 30%;
+    margin-top: 10px;
+}
+
+#message>input[type=submit] {
+    margin-top: 10px;
+}
+
+#message-display {
+    margin: 20px auto;
+    width: 50%;
+}
+
+#message-display>li {
+    background-color: white;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+#message-display>li>.author,
+#message-display>li>.comment {
+    line-height: 30px;
+    font-size: 18px;
+}
+
+#message-display>li>.author {
+    padding-left: 15px;
+    color: lightcoral;
+}
+
+#message-display>li>.comment {
+    padding-right: 7px;
+    color: lightblue;
+}
